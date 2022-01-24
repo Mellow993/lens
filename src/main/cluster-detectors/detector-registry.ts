@@ -40,12 +40,14 @@ export class DetectorRegistry extends Singleton {
         ) {
           results.set(key, data);
         }
-      } catch {} // ignore errors
+      } catch {
+        // ignore errors
+      }
     }
 
     return Object.fromEntries(
       iter.map(
-        Object.entries(results),
+        results.entries(),
         ([key, { value }]) => [key, value],
       ),
     );
